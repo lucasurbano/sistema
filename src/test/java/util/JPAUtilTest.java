@@ -1,11 +1,12 @@
-package main;
+package util;
 
 import javax.persistence.EntityManager;
 
-import util.JPAUtil;
+import org.junit.Test;
 
-public class TestaConexao {
-	public static void main(String[] args) {
+public class JPAUtilTest {
+	@Test
+	public void getEntityManager() {
 		EntityManager sessao = JPAUtil.getEntityManager();
 		sessao.close();
 	}
