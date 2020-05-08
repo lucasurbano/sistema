@@ -45,15 +45,15 @@ public class UsuarioServlet extends HttpServlet {
 
 		String i = req.getParameter("i");
 		if (i != null && i != "") {
-			//usuarioService.excluir(Integer.parseInt(i));
-		//}
+			// usuarioService.excluir(Integer.parseInt(i));
+			// }
 			usuarioService.excluir(Integer.parseInt(i));
-			   req.setAttribute("msg", "Excluído com sucesso!");
-			  }
+			req.setAttribute("msg", "Excluído com sucesso!");
+		}
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("usuario.jsp");
 
-		req.setAttribute("lista", usuarioService.getTodosUsuarios());
+		req.setAttribute("lista", usuarioService.buscarTodosUsuarios());
 
 		dispatcher.forward(req, resp);
 
@@ -61,17 +61,18 @@ public class UsuarioServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		// String codigo = req.getParameter("id");
 		String nome = req.getParameter("nome");
+		String email = req.getParameter("email");
+		String senha = req.getParameter("senha");
 
-		Usuario usuario = new Usuario();
-		usuario.setNome(nome);
+		Usuario usuario = new Usuario(null, nome, email, senha);
 
-		usuarioService.cadastrar(usuario);
+		usuarioService.salvar(usuario);
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("usuario.jsp");
 		req.setAttribute("msg", "Cadastrado com sucesso!");
-        req.setAttribute("lista", usuarioService.getTodosUsuarios());
+		req.setAttribute("lista", usuarioService.buscarTodosUsuarios());
 		dispatcher.forward(req, resp);
 
 	}

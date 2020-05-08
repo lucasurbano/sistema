@@ -1,24 +1,57 @@
 package dao;
 
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import domain.Usuario;
 
 public class UsuarioDAOTest {
+	private UsuarioDAO usuarioDAO;
+
+	@Before
+	public void iniciar() {
+		usuarioDAO = new UsuarioDAO();
+	}
+
 	@Test
 	public void salvar() {
 		Usuario u1 = new Usuario();
-		u1.setCodigo(1);
-		u1.setNome("adm");
-		u1.setEmail("adm@ivia.com");
-		u1.setSenha("ivia");
-		
-		Usuario u2 = new Usuario(2, "lucas", "lucas@ivia.com", "mysenha");
-		
+		// u1(null, "adm", "adm2@ivia.com", "ivia");
 
-	UsuarioDAO usuarioDAO = new UsuarioDAO();
-	usuarioDAO.salvar(u1);
-	usuarioDAO.salvar(u2);
-	
-	}	
+		u1.setNome("adm");
+		u1.setEmail("adm3@ivia.com");
+		u1.setSenha("ivia");
+
+		Usuario u2 = new Usuario(null, "lucas", "lucas3@ivia.com", "mysenha");
+
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		usuarioDAO.salvar(u1);
+		usuarioDAO.salvar(u2);
+
+	}
+
+	public void buscar() {
+		Usuario u1 = usuarioDAO.buscar(20);
+		System.out.println(u1);
+
+		Usuario u2 = usuarioDAO.buscar(30);
+		System.out.println(u2);
+	}
+
+	public void listar() {
+		List<Usuario> usuarios = usuarioDAO.listar();
+
+		for (Usuario usuario : usuarios) {
+			System.out.println(usuario);
+		}
+	}
+
+	public void testar() {
+		salvar();
+		buscar();
+		listar();
+	}
+
 }
