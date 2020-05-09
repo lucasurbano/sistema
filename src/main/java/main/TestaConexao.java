@@ -2,7 +2,7 @@ package main;
 
 import javax.persistence.EntityManager;
 
-import util.JPAUtil;
+import br.com.urbano.util.JPAUtil;
 
 public class TestaConexao {
 	public static void main(String[] args) {

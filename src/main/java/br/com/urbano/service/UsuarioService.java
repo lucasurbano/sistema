@@ -3,8 +3,8 @@ package br.com.urbano.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.UsuarioDAO;
-import domain.Usuario;
+import br.com.urbano.dao.UsuarioDAO;
+import br.com.urbano.domain.Usuario;
 
 public class UsuarioService {
 	private static List<Usuario> usuarios = new ArrayList<>();

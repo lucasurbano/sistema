@@ -5,7 +5,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import domain.Usuario;
+import br.com.urbano.dao.UsuarioDAO;
+import br.com.urbano.domain.Usuario;
 
 public class UsuarioDAOTest {
 	private UsuarioDAO usuarioDAO;
@@ -15,7 +16,6 @@ public class UsuarioDAOTest {
 		usuarioDAO = new UsuarioDAO();
 	}
 
-	@Test
 	public void salvar() {
 		Usuario u1 = new Usuario();
 		// u1(null, "adm", "adm2@ivia.com", "ivia");
@@ -40,6 +40,7 @@ public class UsuarioDAOTest {
 		System.out.println(u2);
 	}
 
+	@Test
 	public void listar() {
 		List<Usuario> usuarios = usuarioDAO.listar();
 

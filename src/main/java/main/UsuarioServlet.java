@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.urbano.domain.Usuario;
 import br.com.urbano.service.UsuarioService;
-import domain.Usuario;
 
 @WebServlet(urlPatterns = "/usuario")
 public class UsuarioServlet extends HttpServlet {

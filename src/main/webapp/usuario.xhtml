@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<title>Usuarios</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:panel header="Usuarios">
+
+			<p:messages closable="true">
+				<p:autoUpdate />
+			</p:messages>
+			
+			<h:panelGrid id="painelDados" columns="4">
+
+				<p:outputLabel value="Código" />
+				<p:inputText name="codigo" 
+							 value="#{usuarioBean.usuario.codigo}"
+							 readonly="true"							  
+							 type="text"/>
+
+				<p:outputLabel value="Nome" />
+				<p:inputText name="nome" 
+							 value="#{usuarioBean.usuario.nome}"
+							 size="30"
+							 type="text" 
+							 placeholder="Informe seu Nome"
+							 required="true"
+							 requiredMessage="Favor, informar o nome"/> 
+							 
+
+				<p:outputLabel value="Email" />
+				<p:inputText name="email"
+							 value="#{usuarioBean.usuario.email}" 
+							 type="email" 
+							 placeholder="Contato@ivia.com"							  
+							 required="true"
+							 requiredMessage="Favor, informar o Email"/>
+
+				<p:outputLabel value="Senha" /> 
+				<p:inputText name="senha"
+							 value="#{usuarioBean.usuario.senha}" 
+							 size="30" 
+							 type="password" 
+							 placeholder="Ex: 123456"
+							 required="true"
+							 requiredMessage="Favor, informar a senha" />
+
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton type="submit" 
+								 value="Cadastrar"
+								 actionListener="#{usuarioBean.salvar()}"
+								 update="painelDados"								 
+								 />
+			</h:panelGrid>
+
+			<p:separator />
+			
+			<p:dataTable emptyMessage="Não há registros." paginator="true" 
+						 value="#{usuarioBean.usuarios}" var="cursor">
+				<p:column headerText="#">#{cursor.codigo}</p:column>
+				<p:column headerText="Nome">#{cursor.nome}</p:column>
+				<p:column headerText="Email">#{cursor.email}</p:column>				
+				<p:column headerText="Opções"></p:column>
+			</p:dataTable>
+			
+		</p:panel>
+	</h:form>
+
+</h:body>
+</html>

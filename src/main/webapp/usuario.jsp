@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@page import="domain.Usuario"%>
+<%@page import="br.com.urbano.domain.Usuario"%>
 <%@page import="java.util.List"%>
 <html>
 <head>
