@@ -27,16 +27,6 @@ public class UsuarioBean implements Serializable {
 		Messages.addGlobalInfo("Usuario salvo com sucesso");
 	}
 
-	/*
-	 * public Usuario getUsuario() { return usuario; }
-	 * 
-	 * public void setUsuario(Usuario usuario) { this.usuario = usuario; }
-	 * 
-	 * public List<Usuario> getUsuarios() { return usuarios; }
-	 * 
-	 * public void setUsuarios(List<Usuario> usuarios) { this.usuarios = usuarios; }
-	 */
-
 	@PostConstruct
 	public void listar() {
 		novo();

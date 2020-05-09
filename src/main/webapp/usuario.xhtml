@@ -57,13 +57,13 @@
 				<p:commandButton type="submit" 
 								 value="Cadastrar"
 								 actionListener="#{usuarioBean.salvar()}"
-								 update="painelDados"								 
+								 update="painelDados tabela_usuarios"								 
 								 />
 			</h:panelGrid>
 
 			<p:separator />
 			
-			<p:dataTable emptyMessage="Não há registros." paginator="true" 
+			<p:dataTable id="tabela_usuarios" emptyMessage="Não há registros." paginator="true" 
 						 value="#{usuarioBean.usuarios}" var="cursor">
 				<p:column headerText="#">#{cursor.codigo}</p:column>
 				<p:column headerText="Nome">#{cursor.nome}</p:column>
