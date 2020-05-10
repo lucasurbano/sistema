@@ -56,7 +56,7 @@ public class UsuarioBean implements Serializable {
 
 			usuarioDAO.salvar(usuario);
 
-			novo();
+			//novo();
 			usuarios = usuarioDAO.listar();
 
 			Messages.addGlobalInfo("Usuario salvo com sucesso");
