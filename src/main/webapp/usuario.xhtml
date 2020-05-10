@@ -74,7 +74,8 @@
 				<p:inputText name="nome" 
 							 value="#{usuarioBean.usuario.nome}"
 							 size="30"							 
-							 type="text" 
+							 type="text"
+							 required="true" 
 							 placeholder="Informe seu Nome"							 
 							 requiredMessage="Favor, informar o nome"/> 
 							 
@@ -82,18 +83,18 @@
 				<p:outputLabel value="Email" />
 				<p:inputText name="email"
 							 value="#{usuarioBean.usuario.email}" 
-							 type="email" 
-							 placeholder="Contato@ivia.com"							  
-							 
+							 type="email"
+							 required="true" 
+							 placeholder="Contato@ivia.com"	 
 							 requiredMessage="Favor, informar o Email"/>
 
 				<p:outputLabel value="Senha" /> 
 				<p:inputText name="senha"
 							 value="#{usuarioBean.usuario.senha}" 
 							 size="30" 
-							 type="password" 
-							 placeholder="Ex: 123456"
-							 
+							 type="password"
+							 required="true" 
+							 placeholder="Ex: 123456"							 
 							 requiredMessage="Favor, informar a senha" />
 			</h:panelGrid>
 
