@@ -21,7 +21,7 @@ public class LoginManagedBean implements Serializable {
 
 	public String envia() {
 
-		usuario = usuarioDAO.getUsuario(usuario.getNome(), usuario.getSenha());
+		usuario = usuarioDAO.getUsuario(usuario.getEmail(), usuario.getSenha());
 		if (usuario == null) {
 			usuario = new Usuario();
 			Messages.addFlashGlobalError("Usuário ou senha incorretos!!");

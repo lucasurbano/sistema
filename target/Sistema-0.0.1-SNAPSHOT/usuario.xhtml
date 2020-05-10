@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<title>Usuarios</title>
+</h:head>
+<h:body>
+
+	<h:form id="painelDados">
+		<p:panel header="Usuarios">
+
+			<p:messages closable="true">
+				<p:autoUpdate />
+			</p:messages>
+			
+			<h:panelGrid id="painelDados" columns="4">
+
+				<p:outputLabel value="Código" />
+				<p:inputText name="codigo" 
+							 value="#{usuarioBean.usuario.codigo}"
+							 readonly="true"							  
+							 type="text"/>
+
+				<p:outputLabel value="Nome" />
+				<p:inputText name="nome" 
+							 value="#{usuarioBean.usuario.nome}"
+							 size="30"							 
+							 type="text" 
+							 placeholder="Informe seu Nome"
+							 
+							 requiredMessage="Favor, informar o nome"/> 
+							 
+
+				<p:outputLabel value="Email" />
+				<p:inputText name="email"
+							 value="#{usuarioBean.usuario.email}" 
+							 type="email" 
+							 placeholder="Contato@ivia.com"							  
+							 
+							 requiredMessage="Favor, informar o Email"/>
+
+				<p:outputLabel value="Senha" /> 
+				<p:inputText name="senha"
+							 value="#{usuarioBean.usuario.senha}" 
+							 size="30" 
+							 type="password" 
+							 placeholder="Ex: 123456"
+							 
+							 requiredMessage="Favor, informar a senha" />
+
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton type="submit" 
+								 value="Cadastrar"
+								 actionListener="#{usuarioBean.salvar()}"
+								 update="painelDados"								 
+								 />
+			</h:panelGrid>
+			
+		</p:panel>
+			<p:separator />
+			
+			<p:dataTable id="tabela_usuarios" emptyMessage="Não há registros." rows="10"
+						 paginator="true" value="#{usuarioBean.usuarios}" var="cursor" >
+				<p:column headerText="#" sortBy="#{cursor.codigo}" filterBy="#{cursor.codigo}">#{cursor.codigo}</p:column>
+				<p:column headerText="Nome" sortBy="#{cursor.nome}" filterBy="#{cursor.nome}">#{cursor.nome}</p:column>
+				<p:column headerText="Email" sortBy="#{cursor.email}" filterBy="#{cursor.email}">#{cursor.email}</p:column>						
+				<p:column headerText="Opções">
+						<p:commandButton icon="ui-icon-trash"
+							action="#{usuarioBean.deletarUsuario(cursor.codigo)}">
+							<p:confirm header="Confirmação"
+								message="Deseja excluir o usuario?" icon="ui-icon-alert" />						
+						</p:commandButton>
+
+
+
+			
+					</p:column>
+			</p:dataTable>
+</h:form>
+
+			<h:form>
+				<p:confirmDialog global="true" >
+					<p:commandButton value="Sim" process="@painelDados" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>		
+					
+			</h:form>
+
+</h:body>
+</html>
