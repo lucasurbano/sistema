@@ -91,4 +91,20 @@ public class UsuarioDAO {
 
 	}
 
+	public Usuario getUsuario(String nome, String senha) {
+		EntityManager sessao = JPAUtil.getEntityManager();
+		Usuario resultado = null;
+		try {
+
+			resultado = (Usuario) sessao.createQuery("from Usuario u where u.nome = :name and u.senha = :senha")
+					.setParameter("name", nome).setParameter("senha", senha).getSingleResult();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+		}
+		return resultado;
+
+	}
+
 }
