@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -39,7 +40,7 @@ public class UsuarioBean implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void novo() {
 		usuario = new Usuario();
 
@@ -59,8 +60,44 @@ public class UsuarioBean implements Serializable {
 			System.out.println("Salvo com sucesso");
 		} catch (RuntimeException e) {
 			System.out.println("Erro ... ");
+			Messages.addFlashGlobalError("Ocorreu um erro ao tentar salvar o usuario");
 			e.printStackTrace();
 		}
+	}
+
+	public void excluir(ActionEvent evento) {
+		try {
+			usuario = (Usuario) evento.getComponent().getAttributes().get("usuarioSelecionado");
+
+			System.out.printf("Codigo do cara %d", usuario.getCodigo());
+			System.out.printf("Nome do cara %s", usuario.getNome());
+
+			UsuarioDAO usuarioDAO = new UsuarioDAO();
+			usuarioDAO.excluir(usuario);
+
+			usuarios = usuarioDAO.listar();
+
+			Messages.addGlobalInfo("Usuario removido com sucesso");
+		} catch (RuntimeException erro) {
+			System.out.println("Erro ... ");
+			Messages.addFlashGlobalError("Ocorreu um erro ao tentar remover o usuario");
+			erro.printStackTrace();
+		}
+	}
+
+	public void deletarUsuario(int codigoUsuario) {
+		System.out.printf("Codigo do cara %d", codigoUsuario);
+		
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		usuarioDAO.deletarUsuarioId(codigoUsuario);
+		
+		listar();
+		
+		Messages.addGlobalInfo("Usuario será ainda removido com sucesso");
+	}
+
+	public void editar(ActionEvent evento) {
+		usuario = (Usuario) evento.getComponent().getAttributes().get("usuarioSelecionado");
 	}
 
 }

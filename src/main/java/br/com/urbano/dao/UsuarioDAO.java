@@ -27,6 +27,27 @@ public class UsuarioDAO {
 		}
 	}
 
+	public void excluir(Usuario usuario) {
+
+		EntityManager sessao = JPAUtil.getEntityManager();
+		EntityTransaction transacao = sessao.getTransaction();
+
+		try {
+			transacao.begin();
+			sessao.remove(usuario);
+			transacao.commit();
+
+		} catch (RuntimeException e) {
+			if (transacao != null) {
+				transacao.rollback();
+			}
+			throw e;
+		} finally {
+			sessao.close();
+		}
+
+	}
+
 	public Usuario buscar(Integer codigo) {
 		EntityManager sessao = JPAUtil.getEntityManager();
 		Usuario usuario = sessao.find(Usuario.class, codigo);
@@ -47,6 +68,27 @@ public class UsuarioDAO {
 		} finally {
 		}
 		return resultado;
+	}
+
+	public void deletarUsuarioId(int codigoUsuario) {
+		EntityManager sessao = JPAUtil.getEntityManager();
+		EntityTransaction transacao = sessao.getTransaction();
+
+		try {
+			Usuario usuario = sessao.find(Usuario.class, codigoUsuario);
+			transacao.begin();
+			sessao.remove(usuario);
+			transacao.commit();
+
+		} catch (RuntimeException e) {
+			if (transacao != null) {
+				transacao.rollback();
+			}
+			throw e;
+		} finally {
+			sessao.close();
+		}
+
 	}
 
 }

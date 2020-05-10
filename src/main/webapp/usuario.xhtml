@@ -2,7 +2,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html" />
 	<title>Usuarios</title>
@@ -21,7 +22,7 @@
 				<p:outputLabel value="Código" />
 				<p:inputText name="codigo" 
 							 value="#{usuarioBean.usuario.codigo}"
-							 readonly="true"							  
+							 							  
 							 type="text"/>
 
 				<p:outputLabel value="Nome" />
@@ -63,14 +64,31 @@
 
 			<p:separator />
 			
-			<p:dataTable id="tabela_usuarios" emptyMessage="Não há registros." paginator="true" 
-						 value="#{usuarioBean.usuarios}" var="cursor">
-				<p:column headerText="#">#{cursor.codigo}</p:column>
-				<p:column headerText="Nome">#{cursor.nome}</p:column>
-				<p:column headerText="Email">#{cursor.email}</p:column>				
-				<p:column headerText="Opções"></p:column>
+			<p:dataTable id="tabela_usuarios" emptyMessage="Não há registros." rows="10"
+						 paginator="true" value="#{usuarioBean.usuarios}" var="cursor" >
+				<p:column headerText="#" sortBy="#{cursor.codigo}" filterBy="#{cursor.codigo}">#{cursor.codigo}</p:column>
+				<p:column headerText="Nome" sortBy="#{cursor.nome}" filterBy="#{cursor.nome}">#{cursor.nome}</p:column>
+				<p:column headerText="Email" sortBy="#{cursor.email}" filterBy="#{cursor.email}">#{cursor.email}</p:column>						
+				<p:column headerText="Opções">
+						<p:commandButton icon="ui-icon-trash"
+							action="#{usuarioBean.deletarUsuario(cursor.codigo)}">
+							<p:confirm header="Confirmação"
+								message="Deseja excluir o usuario?" icon="ui-icon-alert" />						
+						</p:commandButton>
+
+
+
+			
+					</p:column>
 			</p:dataTable>
 			
+				<p:confirmDialog global="true">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>		
+					
 		</p:panel>
 	</h:form>
 
