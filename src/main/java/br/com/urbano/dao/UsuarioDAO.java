@@ -15,7 +15,12 @@ public class UsuarioDAO {
 		EntityTransaction transacao = sessao.getTransaction();
 		try {
 			transacao.begin();
-			sessao.persist(usuario);
+			if (usuario.getCodigo() == null) {
+				sessao.persist(usuario);
+			} else {
+				System.out.printf("UsuarioDAO-->salvar-->else");				
+				usuario = sessao.merge(usuario);
+			}
 			transacao.commit();
 		} catch (RuntimeException e) {
 			if (transacao != null) {
@@ -78,6 +83,27 @@ public class UsuarioDAO {
 			Usuario usuario = sessao.find(Usuario.class, codigoUsuario);
 			transacao.begin();
 			sessao.remove(usuario);
+			transacao.commit();
+
+		} catch (RuntimeException e) {
+			if (transacao != null) {
+				transacao.rollback();
+			}
+			throw e;
+		} finally {
+			sessao.close();
+		}
+
+	}
+
+	public void editarUsuarioId(int codigoUsuario) {
+		EntityManager sessao = JPAUtil.getEntityManager();
+		EntityTransaction transacao = sessao.getTransaction();
+
+		try {
+			Usuario usuario = sessao.find(Usuario.class, codigoUsuario);
+			transacao.begin();
+			sessao.merge(usuario);
 			transacao.commit();
 
 		} catch (RuntimeException e) {
