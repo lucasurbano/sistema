@@ -76,4 +76,4 @@ web: java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT targe
 
 ## Feature Future
 
-*Usuario* -  Adicionar mais que um telfone ao cadastro.
+*Usuario* -  Adicionar mais que um telefone ao cadastro.
