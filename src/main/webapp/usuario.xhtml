@@ -65,19 +65,13 @@
 		<h:form id="formCadastro">
 			<!--PANELGRID DE USUARIOS - FORMULARIO-->
 			<h:panelGrid id="painel" columns="4">
-					<p:outputLabel value="Código" />
-				<p:inputText name="codigo" 
-							 value="#{usuarioBean.usuario.codigo}"
-							 readonly="true"							  
-							 type="text"/>
 
 				<p:outputLabel value="Nome" />
 				<p:inputText name="nome" 
 							 value="#{usuarioBean.usuario.nome}"
 							 size="30"							 
 							 type="text"
-							 required="true" 
-							 placeholder="Informe seu Nome"							 
+							 required="true"
 							 requiredMessage="Favor, informar o nome"/> 
 							 
 
@@ -86,7 +80,6 @@
 							 value="#{usuarioBean.usuario.email}" 
 							 type="email"
 							 required="true" 
-							 placeholder="Contato@ivia.com"	 
 							 requiredMessage="Favor, informar o Email"/>
 
 				<p:outputLabel value="Senha" /> 
@@ -94,12 +87,11 @@
 							 value="#{usuarioBean.usuario.senha}" 
 							 size="30" 
 							 type="password"
-							 required="true" 
-							 placeholder="Ex: 123456"							 
+							 required="true"							 							 
 							 requiredMessage="Favor, informar a senha" />
 			</h:panelGrid>
 
-			<h:panelGrid columns="4">
+			<h:panelGrid columns="2">
 				<p:commandButton value="Salvar"
 					actionListener="#{usuarioBean.salvar}"
 					update=":formCadastro:painel :formListagem:tabela" />
