@@ -2,8 +2,6 @@ package br.com.urbano.bean;
 
 import java.io.Serializable;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -30,6 +28,7 @@ public class LoginManagedBean implements Serializable {
 			 * FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário ou senha incorretos!",
 			 * "Erro no Login!"));
 			 */
+
 			return null;
 		} else {
 			return "/usuario.xhtml";

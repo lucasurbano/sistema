@@ -22,6 +22,7 @@ public class UsuarioBean implements Serializable {
 
 	private Usuario usuario;
 	private List<Usuario> usuarios;
+	private List<Usuario> usuariosFiltrados;
 
 	public void salva() {
 		System.out.println("Botao cadastrar pressionado");
@@ -56,7 +57,7 @@ public class UsuarioBean implements Serializable {
 
 			usuarioDAO.salvar(usuario);
 
-			//novo();
+			// novo();
 			usuarios = usuarioDAO.listar();
 
 			Messages.addGlobalInfo("Usuario salvo com sucesso");
@@ -103,13 +104,12 @@ public class UsuarioBean implements Serializable {
 	public void editarUsuario(int codigoUsuario) {
 		System.out.printf("Codigo do usuario %d", codigoUsuario);
 		try {
-			// cidade = (Cidade)
-			// evento.getComponent().getAttributes().get("cidadeSelecionada");
-			// EstadoDAO estadoDAO = new EstadoDAO();
-			// estados = estadoDAO.listar();
+
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
 			usuarioDAO.editarUsuarioId(codigoUsuario);
+			
 			listar();
+			
 		} catch (RuntimeException erro) {
 			Messages.addFlashGlobalError("Ocorreu um erro ao tentar selecionar usuario");
 			erro.printStackTrace();
@@ -119,5 +119,15 @@ public class UsuarioBean implements Serializable {
 	public void editar(ActionEvent evento) {
 		usuario = (Usuario) evento.getComponent().getAttributes().get("usuarioSelecionado");
 	}
+	
+	
+		
+	   public List<Usuario> getUsuariosFiltrados() {
+	        return usuariosFiltrados;
+	    }
+
+	    public void setUsuariosFiltrados(List<Usuario> usuariosFiltrados) {
+	        this.usuariosFiltrados = usuariosFiltrados;
+	    }
 
 }

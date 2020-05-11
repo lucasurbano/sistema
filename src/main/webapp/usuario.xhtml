@@ -16,12 +16,13 @@
 	<h:form id="formListagem">
 		<p:panel header="Usuarios - Listagem">		
 		
+			
 			<!--TABELA DE USUARIOS-->
-			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado." paginator="true" value="#{usuarioBean.usuarios}" var="cursor" rows="10">
+			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado." paginator="true" value="#{usuarioBean.usuarios}" var="cursor" rows="10" filteredValue="#{usuarioBean.usuariosFiltrados}">	
 				
 				<f:facet name="header">
 					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
-						actionListener="#{usuarioBean.novo}" update=":formCadastro:painel" />
+						actionListener="#{usuarioBean.novo}" update=":formCadastro:painel"/>
 				</f:facet>
 			
 				<!--TABELA DE USUARIOS::::COLUNAS-->
