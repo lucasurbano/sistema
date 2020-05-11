@@ -23,11 +23,6 @@ public class LoginManagedBean implements Serializable {
 		if (usuario == null) {
 			usuario = new Usuario();
 			Messages.addFlashGlobalError("Usuário ou senha incorretos!!");
-			/*
-			 * FacesContext.getCurrentInstance().addMessage(null, new
-			 * FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário ou senha incorretos!",
-			 * "Erro no Login!"));
-			 */
 
 			return null;
 		} else {

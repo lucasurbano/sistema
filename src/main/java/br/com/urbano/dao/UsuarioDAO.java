@@ -60,12 +60,11 @@ public class UsuarioDAO {
 	}
 
 	public List<Usuario> listar() {
-		// String jpql = ("from Usuario u");
+
 		EntityManager sessao = JPAUtil.getEntityManager();
 		List<Usuario> resultado = null;
 		try {
-			// Query consulta = sessao.createQuery("from Usuario u");
-			// List<Usuario> resultado = consulta.getResultList();
+
 			resultado = sessao.createQuery("from Usuario u").getResultList();
 
 		} catch (Exception e) {

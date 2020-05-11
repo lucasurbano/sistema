@@ -74,8 +74,8 @@ public class UsuarioBean implements Serializable {
 		try {
 			usuario = (Usuario) evento.getComponent().getAttributes().get("usuarioSelecionado");
 
-			System.out.printf("Codigo do cara %d", usuario.getCodigo());
-			System.out.printf("Nome do cara %s", usuario.getNome());
+			System.out.printf("Codigo do usuario %d", usuario.getCodigo());
+			System.out.printf("Nome do usuario %s", usuario.getNome());
 
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
 			usuarioDAO.excluir(usuario);

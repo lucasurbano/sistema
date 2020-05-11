@@ -16,18 +16,19 @@ public class UsuarioDAOTest {
 		usuarioDAO = new UsuarioDAO();
 	}
 
+	@Test
 	public void salvar() {
-		Usuario u1 = new Usuario();
+//		Usuario u1 = new Usuario();
 		// u1(null, "adm", "adm2@ivia.com", "ivia");
 
-		u1.setNome("adm");
-		u1.setEmail("adm3@ivia.com");
-		u1.setSenha("ivia");
+//		u1.setNome("adm");
+//		u1.setEmail("adm3@ivia.com");
+//		u1.setSenha("ivia");
 
-		Usuario u2 = new Usuario(null, "lucas", "lucas3@ivia.com", "mysenha");
+		Usuario u2 = new Usuario(null, "Desenvolvedor", "dev@ivia.com", "81998741290", "sefaz");
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		usuarioDAO.salvar(u1);
+//		usuarioDAO.salvar(u1);
 		usuarioDAO.salvar(u2);
 
 	}
@@ -40,7 +41,6 @@ public class UsuarioDAOTest {
 		System.out.println(u2);
 	}
 
-	@Test
 	public void listar() {
 		List<Usuario> usuarios = usuarioDAO.listar();
 

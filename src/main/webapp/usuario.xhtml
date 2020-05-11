@@ -29,6 +29,7 @@
 				<p:column headerText="#" sortBy="#{cursor.codigo}" filterBy="#{cursor.codigo}">#{cursor.codigo}</p:column>
 				<p:column headerText="Nome" sortBy="#{cursor.nome}" filterBy="#{cursor.nome}">#{cursor.nome}</p:column>
 				<p:column headerText="Email" sortBy="#{cursor.email}" filterBy="#{cursor.email}">#{cursor.email}</p:column>
+				<p:column headerText="Telefone" sortBy="#{cursor.telefone}" filterBy="#{cursor.telefone}">#{cursor.telefone}</p:column>
 
 				<!--TABELA DE USUARIOS::::COLUNAS DE OPÇÕES-->
 				<p:column headerText="Opções">
@@ -69,7 +70,7 @@
 				<p:outputLabel value="Nome" />
 				<p:inputText name="nome" 
 							 value="#{usuarioBean.usuario.nome}"
-							 size="30"							 
+							 size="30"							 							 
 							 type="text"
 							 required="true"
 							 requiredMessage="Favor, informar o nome"/> 
@@ -77,10 +78,17 @@
 
 				<p:outputLabel value="Email" />
 				<p:inputText name="email"
-							 value="#{usuarioBean.usuario.email}" 
+							 value="#{usuarioBean.usuario.email}"
+							 size="30"			 
 							 type="email"
 							 required="true" 
 							 requiredMessage="Favor, informar o Email"/>
+
+				<p:outputLabel value="Telefone" />
+				<p:inputText name="telefone"
+							 size="30"			
+							 value="#{usuarioBean.usuario.telefone}"
+							 type="text"/>							 
 
 				<p:outputLabel value="Senha" /> 
 				<p:inputText name="senha"
